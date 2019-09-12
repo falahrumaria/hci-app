@@ -13,6 +13,14 @@ public class SectionEntity {
     private String name;
     private String description;
 
+    public SectionEntity(Integer id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+
+    public SectionEntity() {
+    }
+
     public Integer getId() {
         return id;
     }

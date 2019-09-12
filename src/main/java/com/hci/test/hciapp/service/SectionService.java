@@ -8,6 +8,7 @@ import com.hci.test.hciapp.response.SectionResp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -20,11 +21,12 @@ public class SectionService {
 
     public SectionResp get(int userId) {
         SectionResp resp = new SectionResp();
-        Optional<UserEntity> optional = userRepo.findById(userId);
-        if (!optional.isPresent()) {
-            throw new RuntimeException("record not found");
+        SectionOrderEntity sectionOrder;
+        try {
+            sectionOrder = userRepo.findById(userId).getUserGroup().getSectionOrder();
+        } catch (NullPointerException e) {
+            return null;
         }
-        SectionOrderEntity sectionOrder = optional.get().getUserGroup().getSectionOrder();
         List<Module> list = new ArrayList<>();
         list.add(new Module(sectionOrder.getSection1().getDescription(), 1));
         list.add(new Module(sectionOrder.getSection2().getDescription(), 2));

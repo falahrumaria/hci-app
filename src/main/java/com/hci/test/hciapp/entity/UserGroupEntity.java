@@ -16,6 +16,14 @@ public class UserGroupEntity {
     @JoinColumn(name = "id", referencedColumnName = "user_group_id", insertable = false, updatable = false)
     private SectionOrderEntity sectionOrder;
 
+    public UserGroupEntity() {
+    }
+
+    public UserGroupEntity(Integer id, SectionOrderEntity sectionOrder) {
+        this.id = id;
+        this.sectionOrder = sectionOrder;
+    }
+
     public Integer getId() {
         return id;
     }

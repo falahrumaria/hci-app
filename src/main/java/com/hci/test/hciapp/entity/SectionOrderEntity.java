@@ -48,6 +48,20 @@ public class SectionOrderEntity {
     @JoinColumn(name = "order_5", referencedColumnName = "id", insertable = false, updatable = false)
     private SectionEntity section5;
 
+    public SectionOrderEntity() {
+    }
+
+    public SectionOrderEntity(Integer id, Integer userGroupId, SectionEntity section1, SectionEntity section2,
+                              SectionEntity section3, SectionEntity section4, SectionEntity section5) {
+        this.id = id;
+        this.userGroupId = userGroupId;
+        this.section1 = section1;
+        this.section2 = section2;
+        this.section3 = section3;
+        this.section4 = section4;
+        this.section5 = section5;
+    }
+
     public Integer getId() {
         return id;
     }

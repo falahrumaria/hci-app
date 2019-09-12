@@ -24,6 +24,15 @@ public class UserEntity {
     @JoinColumn(name = "user_group_id", referencedColumnName = "id", insertable = false, updatable = false)
     private UserGroupEntity userGroup;
 
+    public UserEntity() {
+    }
+
+    public UserEntity(Integer id, Integer userGroupId, UserGroupEntity userGroup) {
+        this.id = id;
+        this.userGroupId = userGroupId;
+        this.userGroup = userGroup;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -71,5 +80,4 @@ public class UserEntity {
     public void setUserGroup(UserGroupEntity userGroup) {
         this.userGroup = userGroup;
     }
-
 }
